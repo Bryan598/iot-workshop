@@ -1,0 +1,23 @@
+import RPi.GPIO as GPIO
+import time
+
+#setup GPIO
+GPIO.setmode(GPIO.BCM)
+GPIO.seup(18, GPIO.OUT)
+
+try:
+    blink_count = 0
+    while True:
+
+        #turn the LED on
+        GPIO.output(18, GPIO.HIGH)
+        blink_count +=1
+        print(f"blink count:{blink_count}")
+        time.sleep(1)  #wait fr 1 sec
+
+        #turn the LED off
+        GPIO.output(18, GPIO.LOW)
+        time.sleep(1)  #wait fr 1 sec
+
+except KeyboardInterrupt:      #clean up GPIO SETTINGS
+    GPIO.cleanup()        
